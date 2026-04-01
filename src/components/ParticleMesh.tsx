@@ -22,7 +22,7 @@ interface GridPoint {
 const COLS = 80;
 const ROWS = 45;
 const SPACING = 0.35;
-const CAMERA_HEIGHT = 4.5;
+const CAMERA_HEIGHT = -4.5;
 const CAMERA_Z = -3;
 const FOV = 600;
 const MOUSE_RADIUS_3D = 3;
@@ -48,7 +48,7 @@ const ParticleMesh = () => {
       if (relZ <= 0.1) return { sx: -9999, sy: -9999, scale: 0 };
       const scale = FOV / relZ;
       const sx = w / 2 + wx * scale;
-      const sy = h * 0.42 + (wy - CAMERA_HEIGHT) * scale;
+      const sy = h * 0.58 + (wy - CAMERA_HEIGHT) * scale;
       return { sx, sy, scale };
     };
 
@@ -81,10 +81,10 @@ const ParticleMesh = () => {
       // Approximate: cast onto the y=0 plane
       const { w, h } = sizeRef.current;
       // We solve for wz where wy≈0 intersects the mouse ray
-      // sy = h*0.42 + (0 - CAMERA_HEIGHT) * FOV / (wz - CAMERA_Z)
-      // => (my - h*0.42) = -CAMERA_HEIGHT * FOV / (wz - CAMERA_Z)
-      // => wz - CAMERA_Z = -CAMERA_HEIGHT * FOV / (my - h*0.42)
-      const denom = my - h * 0.42;
+      // sy = h*0.58 + (0 - CAMERA_HEIGHT) * FOV / (wz - CAMERA_Z)
+      // => (my - h*0.58) = -CAMERA_HEIGHT * FOV / (wz - CAMERA_Z)
+      // => wz - CAMERA_Z = -CAMERA_HEIGHT * FOV / (my - h*0.58)
+      const denom = my - h * 0.58;
       if (Math.abs(denom) < 1) return { wx: 0, wz: 0, active: false };
       const relZ = (-CAMERA_HEIGHT * FOV) / denom;
       const wz = relZ + CAMERA_Z;
