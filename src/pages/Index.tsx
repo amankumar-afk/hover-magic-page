@@ -4,7 +4,7 @@ import dotpeLogo from "@/assets/dotpe-horizon-logo.svg";
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen bg-background overflow-hidden">
+    <div className="relative min-h-screen bg-[#0a0a0a] overflow-hidden">
       <ParticleMesh />
 
       <div className="relative z-10 min-h-screen flex flex-col lg:flex-row items-center justify-between px-8 md:px-16 lg:px-24 py-12 pointer-events-none">
