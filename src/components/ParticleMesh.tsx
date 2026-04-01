@@ -99,8 +99,16 @@ const ParticleMesh = () => {
       const { w, h } = sizeRef.current;
       ctx.clearRect(0, 0, w, h);
       const pts = pointsRef.current;
-      const time = Date.now() * 0.0003;
+      const m3dTarget = mouse3DTargetRef.current;
       const m3d = mouse3DRef.current;
+      // Lerp mouse position for smoothness
+      if (m3dTarget.active) {
+        m3d.wx += (m3dTarget.wx - m3d.wx) * 0.08;
+        m3d.wz += (m3dTarget.wz - m3d.wz) * 0.08;
+        m3d.active = true;
+      } else {
+        m3d.active = false;
+      }
 
       // Update world positions
       for (const p of pts) {
