@@ -107,6 +107,9 @@ const ParticleMesh = () => {
       ctx.clearRect(0, 0, w, h);
       const pts = pointsRef.current;
       const time = Date.now() * 0.0003;
+      // Fade in over 1.5 seconds
+      const elapsed = Date.now() - startTimeRef.current;
+      const fadeIn = Math.min(elapsed / 1500, 1);
       const m3dTarget = mouse3DTargetRef.current;
       const m3d = mouse3DRef.current;
       // Lerp mouse position for smoothness
