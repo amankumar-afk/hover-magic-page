@@ -199,7 +199,7 @@ const ParticleMesh = () => {
 
     const handleLeave = () => {
       mouseRef.current = { x: -1000, y: -1000 };
-      mouse3DRef.current = { wx: 0, wz: 0, active: false };
+      mouse3DTargetRef.current = { wx: 0, wz: 0, active: false };
     };
 
     window.addEventListener("resize", resize);
