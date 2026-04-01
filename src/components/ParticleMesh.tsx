@@ -169,10 +169,10 @@ const ParticleMesh = () => {
           }
 
           // Dot
-          const radius = Math.max(0.4, depthFactor * 2.2);
+          const radius = Math.max(0.6, depthFactor * 2.8);
           ctx.beginPath();
           ctx.arc(p.sx, p.sy, radius, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(0, 55%, 55%, ${alpha})`;
+          ctx.fillStyle = `hsla(0, 60%, 50%, ${alpha})`;
           ctx.fill();
         }
       }
