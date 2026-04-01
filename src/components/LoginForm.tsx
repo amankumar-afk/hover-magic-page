@@ -74,9 +74,9 @@ const LoginForm = () => {
           </Button>
         </form>
 
-        <p className="text-center text-xs text-muted-foreground">
+        <p className="text-center text-xs text-white/40">
           By clicking continue, you agree to our{" "}
-          <a href="#" className="underline text-foreground hover:text-primary">
+          <a href="#" className="underline text-white/70 hover:text-primary">
             Terms
           </a>
           .
