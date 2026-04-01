@@ -214,6 +214,7 @@ const ParticleMesh = () => {
     canvas.addEventListener("mousemove", handleMouse);
     canvas.addEventListener("mouseleave", handleLeave);
     resize();
+    startTimeRef.current = Date.now();
     animate();
 
     return () => {
