@@ -36,6 +36,7 @@ const ParticleMesh = () => {
   const pointsRef = useRef<GridPoint[]>([]);
   const animRef = useRef<number>(0);
   const sizeRef = useRef({ w: 0, h: 0 });
+  const startTimeRef = useRef<number>(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
