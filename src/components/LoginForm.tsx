@@ -18,10 +18,10 @@ const LoginForm = () => {
     <Card className="w-full max-w-md border border-white/10 shadow-2xl bg-white/5 backdrop-blur-md">
       <CardContent className="p-8 space-y-6">
         <div>
-          <h2 className="text-2xl font-bold text-foreground">
+          <h2 className="text-2xl font-bold text-white">
             Login with your Rista account
           </h2>
-          <p className="text-muted-foreground mt-1 text-sm">
+          <p className="text-white/50 mt-1 text-sm">
             Enter your details below to login to your account
           </p>
         </div>
