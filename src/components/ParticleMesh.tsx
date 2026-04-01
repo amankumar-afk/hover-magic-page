@@ -19,14 +19,14 @@ interface GridPoint {
   vy: number;
 }
 
-const COLS = 80;
-const ROWS = 45;
-const SPACING = 0.35;
+const COLS = 100;
+const ROWS = 55;
+const SPACING = 0.3;
 const CAMERA_HEIGHT = -4.5;
 const CAMERA_Z = -3;
 const FOV = 600;
-const MOUSE_RADIUS_3D = 3;
-const MOUSE_STRENGTH = 1.8;
+const MOUSE_RADIUS_3D = 3.5;
+const MOUSE_STRENGTH = 2.5;
 
 const ParticleMesh = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -104,10 +104,10 @@ const ParticleMesh = () => {
       // Update world positions
       for (const p of pts) {
         // Terrain waves
-        const wave1 = Math.sin(p.wx * 0.6 + time * 1.2) * 0.6;
-        const wave2 = Math.cos(p.wz * 0.4 + time * 0.8) * 0.5;
-        const wave3 = Math.sin((p.wx + p.wz) * 0.35 + time * 0.6) * 0.7;
-        const wave4 = Math.sin(p.wx * 1.2 + time * 2) * 0.2;
+        const wave1 = Math.sin(p.wx * 0.6 + time * 1.2) * 0.9;
+        const wave2 = Math.cos(p.wz * 0.4 + time * 0.8) * 0.7;
+        const wave3 = Math.sin((p.wx + p.wz) * 0.35 + time * 0.6) * 1.0;
+        const wave4 = Math.sin(p.wx * 1.2 + time * 2) * 0.35;
         let targetWy = wave1 + wave2 + wave3 + wave4;
 
         // Mouse push — raises terrain near cursor
@@ -140,7 +140,7 @@ const ParticleMesh = () => {
           if (p.sx < -50 || p.sx > w + 50 || p.sy < -50 || p.sy > h + 50) continue;
 
           const depthFactor = Math.min(p.scale / (FOV / 2), 1);
-          const alpha = depthFactor * depthFactor * 0.9 + 0.12;
+          const alpha = depthFactor * depthFactor * 0.95 + 0.2;
 
           // Horizontal connection
           if (col < COLS - 1) {
@@ -149,8 +149,8 @@ const ParticleMesh = () => {
               ctx.beginPath();
               ctx.moveTo(p.sx, p.sy);
               ctx.lineTo(next.sx, next.sy);
-              ctx.strokeStyle = `hsla(0, 60%, 50%, ${alpha * 0.5})`;
-              ctx.lineWidth = Math.max(0.4, depthFactor * 1.1);
+              ctx.strokeStyle = `hsla(0, 65%, 55%, ${alpha * 0.6})`;
+              ctx.lineWidth = Math.max(0.5, depthFactor * 1.5);
               ctx.stroke();
             }
           }
@@ -162,17 +162,17 @@ const ParticleMesh = () => {
               ctx.beginPath();
               ctx.moveTo(p.sx, p.sy);
               ctx.lineTo(below.sx, below.sy);
-              ctx.strokeStyle = `hsla(0, 60%, 50%, ${alpha * 0.35})`;
-              ctx.lineWidth = Math.max(0.3, depthFactor * 0.7);
+              ctx.strokeStyle = `hsla(0, 65%, 55%, ${alpha * 0.45})`;
+              ctx.lineWidth = Math.max(0.4, depthFactor * 1.0);
               ctx.stroke();
             }
           }
 
           // Dot
-          const radius = Math.max(0.6, depthFactor * 2.8);
+          const radius = Math.max(0.8, depthFactor * 3.5);
           ctx.beginPath();
           ctx.arc(p.sx, p.sy, radius, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(0, 60%, 50%, ${alpha})`;
+          ctx.fillStyle = `hsla(0, 70%, 58%, ${alpha})`;
           ctx.fill();
         }
       }
