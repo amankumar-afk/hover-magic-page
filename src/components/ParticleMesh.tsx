@@ -22,7 +22,7 @@ interface GridPoint {
 const COLS = 80;
 const ROWS = 45;
 const SPACING = 0.35;
-const CAMERA_HEIGHT = 4.5;
+const CAMERA_HEIGHT = -4.5;
 const CAMERA_Z = -3;
 const FOV = 600;
 const MOUSE_RADIUS_3D = 3;
