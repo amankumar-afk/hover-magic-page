@@ -98,7 +98,7 @@ const ParticleMesh = () => {
       const { w, h } = sizeRef.current;
       ctx.clearRect(0, 0, w, h);
       const pts = pointsRef.current;
-      const time = Date.now() * 0.0008;
+      const time = Date.now() * 0.0003;
       const m3d = mouse3DRef.current;
 
       // Update world positions
