@@ -55,7 +55,7 @@ const LoginForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="pin" className="text-sm font-semibold text-foreground">
+            <Label htmlFor="pin" className="text-sm font-semibold text-white/80">
               PIN
             </Label>
             <Input
@@ -65,7 +65,7 @@ const LoginForm = () => {
               value={pin}
               onChange={(e) => setPin(e.target.value)}
               maxLength={4}
-              className="h-11"
+              className="h-11 bg-white/5 border-white/10 text-white placeholder:text-white/30"
             />
           </div>
 
