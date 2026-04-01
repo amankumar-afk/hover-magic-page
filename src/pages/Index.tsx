@@ -13,10 +13,10 @@ const Index = () => {
           <img src={dotpeLogo} alt="DotPe Horizon" className="h-12 md:h-16" />
 
           <div className="space-y-4">
-            <h1 className="text-3xl md:text-4xl lg:text-[42px] font-bold leading-tight text-foreground">
+            <h1 className="text-3xl md:text-4xl lg:text-[42px] font-bold leading-tight text-white">
               See what needs attention in your restaurant
             </h1>
-            <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-md">
+            <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-md">
               Act on the issues that matter first, with a clear view of performance changes, unusual business activity, and the priorities that need your attention.
             </p>
           </div>
