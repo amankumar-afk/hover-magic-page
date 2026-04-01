@@ -117,7 +117,7 @@ const ParticleMesh = () => {
           const dist = Math.sqrt(dx * dx + dz * dz);
           if (dist < MOUSE_RADIUS_3D) {
             const force = (1 - dist / MOUSE_RADIUS_3D);
-            const push = force * force * MOUSE_STRENGTH;
+            const push = force * force * force * MOUSE_STRENGTH;
             targetWy += push;
           }
         }
