@@ -15,7 +15,7 @@ const LoginForm = () => {
   };
 
   return (
-    <Card className="w-full max-w-md border border-white/10 shadow-2xl bg-white/5 backdrop-blur-xl rounded-2xl">
+    <Card className="w-full max-w-md border border-white/10 shadow-2xl bg-white/15 backdrop-blur-xl rounded-2xl">
       <CardContent className="p-8 space-y-6">
         <div>
           <h2 className="text-2xl font-bold text-foreground">
