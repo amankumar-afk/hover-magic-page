@@ -20,7 +20,7 @@ interface GridPoint {
 }
 
 const COLS = 100;
-const ROWS = 55;
+const ROWS = 65;
 const SPACING = 0.3;
 const CAMERA_HEIGHT = -4.5;
 const CAMERA_Z = -3;
@@ -36,6 +36,7 @@ const ParticleMesh = () => {
   const pointsRef = useRef<GridPoint[]>([]);
   const animRef = useRef<number>(0);
   const sizeRef = useRef({ w: 0, h: 0 });
+  const startTimeRef = useRef<number>(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -56,13 +57,19 @@ const ParticleMesh = () => {
     const initPoints = () => {
       const pts: GridPoint[] = [];
       const halfCols = (COLS - 1) / 2;
+      const time = Date.now() * 0.0003;
       for (let row = 0; row < ROWS; row++) {
         for (let col = 0; col < COLS; col++) {
           const wx = (col - halfCols) * SPACING;
           const wz = row * SPACING + 1;
-          const wy = 0;
+          // Start at the correct wave position so there's no bounce
+          const wave1 = Math.sin(wx * 0.6 + time * 1.2) * 0.9;
+          const wave2 = Math.cos(wz * 0.4 + time * 0.8) * 0.7;
+          const wave3 = Math.sin((wx + wz) * 0.35 + time * 0.6) * 1.0;
+          const wave4 = Math.sin(wx * 1.2 + time * 2) * 0.35;
+          const wy = wave1 + wave2 + wave3 + wave4;
           const { sx, sy, scale } = project(wx, wy, wz);
-          pts.push({ wx, wy, wz, baseWy: wy, sx, sy, scale, vy: 0 });
+          pts.push({ wx, wy, wz, baseWy: 0, sx, sy, scale, vy: 0 });
         }
       }
       pointsRef.current = pts;
@@ -100,6 +107,9 @@ const ParticleMesh = () => {
       ctx.clearRect(0, 0, w, h);
       const pts = pointsRef.current;
       const time = Date.now() * 0.0003;
+      // Fade in over 1.5 seconds
+      const elapsed = Date.now() - startTimeRef.current;
+      const fadeIn = Math.min(elapsed / 1500, 1);
       const m3dTarget = mouse3DTargetRef.current;
       const m3d = mouse3DRef.current;
       // Lerp mouse position for smoothness
@@ -150,7 +160,7 @@ const ParticleMesh = () => {
           if (p.sx < -50 || p.sx > w + 50 || p.sy < -50 || p.sy > h + 50) continue;
 
           const depthFactor = Math.min(p.scale / (FOV / 2), 1);
-          const alpha = depthFactor * depthFactor * 0.95 + 0.2;
+          const alpha = (depthFactor * depthFactor * 0.95 + 0.2) * fadeIn;
 
           // Horizontal connection
           if (col < COLS - 1) {
@@ -207,6 +217,7 @@ const ParticleMesh = () => {
     canvas.addEventListener("mousemove", handleMouse);
     canvas.addEventListener("mouseleave", handleLeave);
     resize();
+    startTimeRef.current = Date.now();
     animate();
 
     return () => {
