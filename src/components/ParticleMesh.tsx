@@ -57,13 +57,19 @@ const ParticleMesh = () => {
     const initPoints = () => {
       const pts: GridPoint[] = [];
       const halfCols = (COLS - 1) / 2;
+      const time = Date.now() * 0.0003;
       for (let row = 0; row < ROWS; row++) {
         for (let col = 0; col < COLS; col++) {
           const wx = (col - halfCols) * SPACING;
           const wz = row * SPACING + 1;
-          const wy = 0;
+          // Start at the correct wave position so there's no bounce
+          const wave1 = Math.sin(wx * 0.6 + time * 1.2) * 0.9;
+          const wave2 = Math.cos(wz * 0.4 + time * 0.8) * 0.7;
+          const wave3 = Math.sin((wx + wz) * 0.35 + time * 0.6) * 1.0;
+          const wave4 = Math.sin(wx * 1.2 + time * 2) * 0.35;
+          const wy = wave1 + wave2 + wave3 + wave4;
           const { sx, sy, scale } = project(wx, wy, wz);
-          pts.push({ wx, wy, wz, baseWy: wy, sx, sy, scale, vy: 0 });
+          pts.push({ wx, wy, wz, baseWy: 0, sx, sy, scale, vy: 0 });
         }
       }
       pointsRef.current = pts;
