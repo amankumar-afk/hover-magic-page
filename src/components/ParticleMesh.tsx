@@ -32,6 +32,7 @@ const ParticleMesh = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const mouse3DRef = useRef({ wx: 0, wz: 0, active: false });
+  const mouse3DTargetRef = useRef({ wx: 0, wz: 0, active: false });
   const pointsRef = useRef<GridPoint[]>([]);
   const animRef = useRef<number>(0);
   const sizeRef = useRef({ w: 0, h: 0 });
@@ -99,7 +100,16 @@ const ParticleMesh = () => {
       ctx.clearRect(0, 0, w, h);
       const pts = pointsRef.current;
       const time = Date.now() * 0.0003;
+      const m3dTarget = mouse3DTargetRef.current;
       const m3d = mouse3DRef.current;
+      // Lerp mouse position for smoothness
+      if (m3dTarget.active) {
+        m3d.wx += (m3dTarget.wx - m3d.wx) * 0.08;
+        m3d.wz += (m3dTarget.wz - m3d.wz) * 0.08;
+        m3d.active = true;
+      } else {
+        m3d.active = false;
+      }
 
       // Update world positions
       for (const p of pts) {
@@ -117,13 +127,13 @@ const ParticleMesh = () => {
           const dist = Math.sqrt(dx * dx + dz * dz);
           if (dist < MOUSE_RADIUS_3D) {
             const force = (1 - dist / MOUSE_RADIUS_3D);
-            const push = force * force * MOUSE_STRENGTH;
+            const push = force * force * force * MOUSE_STRENGTH;
             targetWy += push;
           }
         }
 
-        p.vy += (targetWy - p.wy) * 0.1;
-        p.vy *= 0.82;
+        p.vy += (targetWy - p.wy) * 0.04;
+        p.vy *= 0.92;
         p.wy += p.vy;
 
         const proj = project(p.wx, p.wy, p.wz);
@@ -185,12 +195,12 @@ const ParticleMesh = () => {
       const mx = e.clientX - rect.left;
       const my = e.clientY - rect.top;
       mouseRef.current = { x: mx, y: my };
-      mouse3DRef.current = unprojectMouse(mx, my);
+      mouse3DTargetRef.current = unprojectMouse(mx, my);
     };
 
     const handleLeave = () => {
       mouseRef.current = { x: -1000, y: -1000 };
-      mouse3DRef.current = { wx: 0, wz: 0, active: false };
+      mouse3DTargetRef.current = { wx: 0, wz: 0, active: false };
     };
 
     window.addEventListener("resize", resize);
