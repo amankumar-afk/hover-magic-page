@@ -104,10 +104,10 @@ const ParticleMesh = () => {
       // Update world positions
       for (const p of pts) {
         // Terrain waves
-        const wave1 = Math.sin(p.wx * 0.6 + time * 1.2) * 0.6;
-        const wave2 = Math.cos(p.wz * 0.4 + time * 0.8) * 0.5;
-        const wave3 = Math.sin((p.wx + p.wz) * 0.35 + time * 0.6) * 0.7;
-        const wave4 = Math.sin(p.wx * 1.2 + time * 2) * 0.2;
+        const wave1 = Math.sin(p.wx * 0.6 + time * 1.2) * 0.9;
+        const wave2 = Math.cos(p.wz * 0.4 + time * 0.8) * 0.7;
+        const wave3 = Math.sin((p.wx + p.wz) * 0.35 + time * 0.6) * 1.0;
+        const wave4 = Math.sin(p.wx * 1.2 + time * 2) * 0.35;
         let targetWy = wave1 + wave2 + wave3 + wave4;
 
         // Mouse push — raises terrain near cursor
