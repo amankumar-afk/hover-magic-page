@@ -48,7 +48,7 @@ const ParticleMesh = () => {
       if (relZ <= 0.1) return { sx: -9999, sy: -9999, scale: 0 };
       const scale = FOV / relZ;
       const sx = w / 2 + wx * scale;
-      const sy = h * 0.42 + (wy - CAMERA_HEIGHT) * scale;
+      const sy = h * 0.58 + (wy - CAMERA_HEIGHT) * scale;
       return { sx, sy, scale };
     };
 
