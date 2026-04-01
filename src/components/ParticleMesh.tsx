@@ -19,14 +19,14 @@ interface GridPoint {
   vy: number;
 }
 
-const COLS = 80;
-const ROWS = 45;
-const SPACING = 0.35;
+const COLS = 100;
+const ROWS = 55;
+const SPACING = 0.3;
 const CAMERA_HEIGHT = -4.5;
 const CAMERA_Z = -3;
 const FOV = 600;
-const MOUSE_RADIUS_3D = 3;
-const MOUSE_STRENGTH = 1.8;
+const MOUSE_RADIUS_3D = 3.5;
+const MOUSE_STRENGTH = 2.5;
 
 const ParticleMesh = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
