@@ -15,20 +15,20 @@ const LoginForm = () => {
   };
 
   return (
-    <Card className="w-full max-w-md border border-border/50 shadow-lg bg-card/95 backdrop-blur-sm">
+    <Card className="w-full max-w-md border border-white/10 shadow-2xl bg-white/5 backdrop-blur-md">
       <CardContent className="p-8 space-y-6">
         <div>
-          <h2 className="text-2xl font-bold text-foreground">
+          <h2 className="text-2xl font-bold text-white">
             Login with your Rista account
           </h2>
-          <p className="text-muted-foreground mt-1 text-sm">
+          <p className="text-white/50 mt-1 text-sm">
             Enter your details below to login to your account
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-2">
-            <Label htmlFor="account" className="text-sm font-semibold text-foreground">
+            <Label htmlFor="account" className="text-sm font-semibold text-white/80">
               Account Number
             </Label>
             <Input
@@ -37,12 +37,12 @@ const LoginForm = () => {
               value={accountNumber}
               onChange={(e) => setAccountNumber(e.target.value)}
               maxLength={8}
-              className="h-11"
+              className="h-11 bg-white/5 border-white/10 text-white placeholder:text-white/30"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="userId" className="text-sm font-semibold text-foreground">
+            <Label htmlFor="userId" className="text-sm font-semibold text-white/80">
               User ID
             </Label>
             <Input
@@ -50,12 +50,12 @@ const LoginForm = () => {
               placeholder="Enter User ID"
               value={userId}
               onChange={(e) => setUserId(e.target.value)}
-              className="h-11"
+              className="h-11 bg-white/5 border-white/10 text-white placeholder:text-white/30"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="pin" className="text-sm font-semibold text-foreground">
+            <Label htmlFor="pin" className="text-sm font-semibold text-white/80">
               PIN
             </Label>
             <Input
@@ -65,7 +65,7 @@ const LoginForm = () => {
               value={pin}
               onChange={(e) => setPin(e.target.value)}
               maxLength={4}
-              className="h-11"
+              className="h-11 bg-white/5 border-white/10 text-white placeholder:text-white/30"
             />
           </div>
 
@@ -74,9 +74,9 @@ const LoginForm = () => {
           </Button>
         </form>
 
-        <p className="text-center text-xs text-muted-foreground">
+        <p className="text-center text-xs text-white/40">
           By clicking continue, you agree to our{" "}
-          <a href="#" className="underline text-foreground hover:text-primary">
+          <a href="#" className="underline text-white/70 hover:text-primary">
             Terms
           </a>
           .

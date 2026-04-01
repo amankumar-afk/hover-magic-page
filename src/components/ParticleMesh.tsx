@@ -149,7 +149,7 @@ const ParticleMesh = () => {
               ctx.beginPath();
               ctx.moveTo(p.sx, p.sy);
               ctx.lineTo(next.sx, next.sy);
-              ctx.strokeStyle = `hsla(0, 60%, 50%, ${alpha * 0.5})`;
+              ctx.strokeStyle = `hsla(0, 0%, 100%, ${alpha * 0.45})`;
               ctx.lineWidth = Math.max(0.4, depthFactor * 1.1);
               ctx.stroke();
             }
@@ -162,7 +162,7 @@ const ParticleMesh = () => {
               ctx.beginPath();
               ctx.moveTo(p.sx, p.sy);
               ctx.lineTo(below.sx, below.sy);
-              ctx.strokeStyle = `hsla(0, 60%, 50%, ${alpha * 0.35})`;
+              ctx.strokeStyle = `hsla(0, 0%, 100%, ${alpha * 0.3})`;
               ctx.lineWidth = Math.max(0.3, depthFactor * 0.7);
               ctx.stroke();
             }
@@ -172,7 +172,7 @@ const ParticleMesh = () => {
           const radius = Math.max(0.6, depthFactor * 2.8);
           ctx.beginPath();
           ctx.arc(p.sx, p.sy, radius, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(0, 60%, 50%, ${alpha})`;
+          ctx.fillStyle = `hsla(0, 0%, 100%, ${alpha})`;
           ctx.fill();
         }
       }
