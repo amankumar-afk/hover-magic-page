@@ -194,7 +194,7 @@ const ParticleMesh = () => {
       const mx = e.clientX - rect.left;
       const my = e.clientY - rect.top;
       mouseRef.current = { x: mx, y: my };
-      mouse3DRef.current = unprojectMouse(mx, my);
+      mouse3DTargetRef.current = unprojectMouse(mx, my);
     };
 
     const handleLeave = () => {
