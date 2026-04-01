@@ -162,8 +162,8 @@ const ParticleMesh = () => {
               ctx.beginPath();
               ctx.moveTo(p.sx, p.sy);
               ctx.lineTo(below.sx, below.sy);
-              ctx.strokeStyle = `hsla(0, 60%, 52%, ${alpha * 0.2})`;
-              ctx.lineWidth = Math.max(0.2, depthFactor * 0.5);
+              ctx.strokeStyle = `hsla(0, 60%, 50%, ${alpha * 0.35})`;
+              ctx.lineWidth = Math.max(0.3, depthFactor * 0.7);
               ctx.stroke();
             }
           }
