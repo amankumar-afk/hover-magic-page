@@ -42,7 +42,7 @@ const LoginForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="userId" className="text-sm font-semibold text-foreground">
+            <Label htmlFor="userId" className="text-sm font-semibold text-white/80">
               User ID
             </Label>
             <Input
@@ -50,7 +50,7 @@ const LoginForm = () => {
               placeholder="Enter User ID"
               value={userId}
               onChange={(e) => setUserId(e.target.value)}
-              className="h-11"
+              className="h-11 bg-white/5 border-white/10 text-white placeholder:text-white/30"
             />
           </div>
 
