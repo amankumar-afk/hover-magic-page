@@ -32,6 +32,7 @@ const ParticleMesh = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const mouse3DRef = useRef({ wx: 0, wz: 0, active: false });
+  const mouse3DTargetRef = useRef({ wx: 0, wz: 0, active: false });
   const pointsRef = useRef<GridPoint[]>([]);
   const animRef = useRef<number>(0);
   const sizeRef = useRef({ w: 0, h: 0 });
