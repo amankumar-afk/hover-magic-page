@@ -122,8 +122,8 @@ const ParticleMesh = () => {
           }
         }
 
-        p.vy += (targetWy - p.wy) * 0.1;
-        p.vy *= 0.82;
+        p.vy += (targetWy - p.wy) * 0.04;
+        p.vy *= 0.92;
         p.wy += p.vy;
 
         const proj = project(p.wx, p.wy, p.wz);
