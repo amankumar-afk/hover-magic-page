@@ -28,7 +28,7 @@ const LoginForm = () => {
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-2">
-            <Label htmlFor="account" className="text-sm font-semibold text-foreground">
+            <Label htmlFor="account" className="text-sm font-semibold text-white/80">
               Account Number
             </Label>
             <Input
@@ -37,7 +37,7 @@ const LoginForm = () => {
               value={accountNumber}
               onChange={(e) => setAccountNumber(e.target.value)}
               maxLength={8}
-              className="h-11"
+              className="h-11 bg-white/5 border-white/10 text-white placeholder:text-white/30"
             />
           </div>
 
