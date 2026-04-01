@@ -81,10 +81,10 @@ const ParticleMesh = () => {
       // Approximate: cast onto the y=0 plane
       const { w, h } = sizeRef.current;
       // We solve for wz where wy≈0 intersects the mouse ray
-      // sy = h*0.42 + (0 - CAMERA_HEIGHT) * FOV / (wz - CAMERA_Z)
-      // => (my - h*0.42) = -CAMERA_HEIGHT * FOV / (wz - CAMERA_Z)
-      // => wz - CAMERA_Z = -CAMERA_HEIGHT * FOV / (my - h*0.42)
-      const denom = my - h * 0.42;
+      // sy = h*0.58 + (0 - CAMERA_HEIGHT) * FOV / (wz - CAMERA_Z)
+      // => (my - h*0.58) = -CAMERA_HEIGHT * FOV / (wz - CAMERA_Z)
+      // => wz - CAMERA_Z = -CAMERA_HEIGHT * FOV / (my - h*0.58)
+      const denom = my - h * 0.58;
       if (Math.abs(denom) < 1) return { wx: 0, wz: 0, active: false };
       const relZ = (-CAMERA_HEIGHT * FOV) / denom;
       const wz = relZ + CAMERA_Z;
