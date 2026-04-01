@@ -140,7 +140,7 @@ const ParticleMesh = () => {
           if (p.sx < -50 || p.sx > w + 50 || p.sy < -50 || p.sy > h + 50) continue;
 
           const depthFactor = Math.min(p.scale / (FOV / 2), 1);
-          const alpha = depthFactor * depthFactor * 0.7 + 0.05;
+          const alpha = depthFactor * depthFactor * 0.9 + 0.12;
 
           // Horizontal connection
           if (col < COLS - 1) {
